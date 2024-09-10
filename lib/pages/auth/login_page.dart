@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sign_me/dry_widget/space_widget.dart';
 import 'package:flutter_sign_me/global.dart';
 import 'package:flutter_sign_me/pages/dashboard_page.dart';
 import 'package:flutter_sign_me/themes/colors.dart';
@@ -18,9 +19,9 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: MediaQuery.sizeOf(context).height * 0.1),
+              Space(height: MediaQuery.sizeOf(context).height * 0.1),
               Center(child: Image.asset(logoImg)),
-              SizedBox(height: MediaQuery.sizeOf(context).height * 0.1),
+              Space(height: MediaQuery.sizeOf(context).height * 0.1),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
@@ -41,7 +42,7 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 13),
+              const Space(height: 13),
               Container(
                 width: double.infinity,
                 decoration: ShapeDecoration(
@@ -53,7 +54,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    const SizedBox(height: 20),
+                    const Space(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Column(
@@ -64,14 +65,14 @@ class LoginPage extends StatelessWidget {
                               hintText: "Company ID...",
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          const Space(height: 20),
                           TextFormField(
                             decoration: const InputDecoration(
                               prefixIcon: Icon(Icons.person_rounded),
                               hintText: "User ID...",
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          const Space(height: 20),
                           TextFormField(
                             obscureText: true,
                             decoration: const InputDecoration(
@@ -80,7 +81,7 @@ class LoginPage extends StatelessWidget {
                               suffixIcon: Icon(Icons.visibility_rounded),
                             ),
                           ),
-                          const SizedBox(height: 43),
+                          const Space(height: 43),
                           const ButtonLogin(),
                           SizedBox(
                             height: MediaQuery.sizeOf(context).height * 0.13,
@@ -100,13 +101,13 @@ class LoginPage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const SizedBox(height: 10),
+            const Space10(),
             Text(
               'Copyright © PT. Realta Chakradarma',
               textAlign: TextAlign.center,
               style: TextStyle(color: smcGrey77),
             ),
-            const SizedBox(height: 35),
+            const Space(height: 35),
           ],
         ),
       ),

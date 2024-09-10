@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sign_me/dry_widget/space_widget.dart';
 import 'package:flutter_sign_me/global.dart';
 import 'package:flutter_sign_me/pages/auth/login_page.dart';
 import 'package:flutter_sign_me/themes/colors.dart';
@@ -15,7 +16,7 @@ class WelcomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 74),
+            const Space(height: 74),
             Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,12 +29,12 @@ class WelcomePage extends StatelessWidget {
                       letterSpacing: -0.41,
                     ),
                   ),
-                  const SizedBox(height: 17),
+                  const Space(height: 17),
                   Image.asset(logoImg),
                 ],
               ),
             ),
-            SizedBox(height: MediaQuery.sizeOf(context).height * 0.2),
+            Space(height: MediaQuery.sizeOf(context).height * 0.2),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
@@ -41,7 +42,7 @@ class WelcomePage extends StatelessWidget {
                 style: TextStyle(color: smcWhite, fontSize: 16),
               ),
             ),
-            const SizedBox(height: 47),
+            const Space(height: 47),
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -57,7 +58,7 @@ class WelcomePage extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        const SizedBox(height: 70),
+                        const Space(height: 70),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: SizedBox(
@@ -97,7 +98,7 @@ class WelcomePage extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(color: smcGrey77),
                         ),
-                        const SizedBox(height: 35),
+                        const Space(height: 35),
                       ],
                     ),
                   ],

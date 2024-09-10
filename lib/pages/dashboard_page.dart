@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_sign_me/dry_widget/space_widget.dart';
 import 'package:flutter_sign_me/global.dart';
-import 'package:flutter_sign_me/pages/auth/eform/eform_page.dart';
+import 'package:flutter_sign_me/pages/purchasing/purchasing_page.dart';
+import 'package:flutter_sign_me/pages/auth/login_page.dart';
 import 'package:flutter_sign_me/themes/colors.dart';
 import 'package:flutter_sign_me/themes/images_path.dart';
 
@@ -25,9 +26,12 @@ class DashboardPage extends StatelessWidget {
                 showDialogVersion(context);
               },
               child: const Icon(Icons.info_outline_rounded)),
-          const SizedBox(width: 15),
-          const Icon(Icons.logout_rounded),
-          const SizedBox(width: 15),
+          const VerSpace(width: 15),
+          InkWell(
+            onTap: () => replacePageWith(context, const LoginPage()),
+            child: const Icon(Icons.logout_rounded),
+          ),
+          const VerSpace(width: 15),
         ],
         foregroundColor: smcGreen,
       ),
@@ -36,7 +40,7 @@ class DashboardPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const BoxMenu(),
-            const SizedBox(height: 30),
+            const Space(height: 30),
             Padding(
               padding: const EdgeInsets.only(left: 20, bottom: 10),
               child: Text(
@@ -75,15 +79,15 @@ class DashboardPage extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const SizedBox(height: 30),
+                const Space(height: 30),
                 Image.asset(logoImg),
-                const SizedBox(height: 20),
+                const Space(height: 20),
                 Text(
                   'Sign Me V 1.0.0',
                   textAlign: TextAlign.center,
                   style: TextStyle(color: smcGrey77, fontSize: 16),
                 ),
-                const SizedBox(height: 30),
+                const Space(height: 30),
               ],
             ),
           ),
@@ -116,7 +120,7 @@ class BoxMenu extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             InkWell(
-              onTap: () => replacePageWith(context, const EformPage()),
+              onTap: () => replacePageWith(context, const PurchasingPage()),
               child: Stack(
                 children: [
                   Container(
@@ -128,15 +132,18 @@ class BoxMenu extends StatelessWidget {
                 ],
               ),
             ),
-            Stack(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(right: 15, top: 10),
-                  child: const Menu(label: 'Purchasing\nRequest'),
-                ),
-                const Positioned(
-                    right: 0, child: BadgeUnread(totalUnread: 100)),
-              ],
+            InkWell(
+              onTap: () => replacePageWith(context, const PurchasingPage()),
+              child: Stack(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(right: 15, top: 10),
+                    child: const Menu(label: 'Purchasing\nRequest'),
+                  ),
+                  const Positioned(
+                      right: 0, child: BadgeUnread(totalUnread: 100)),
+                ],
+              ),
             ),
             Stack(
               children: [
@@ -192,7 +199,7 @@ class Menu extends StatelessWidget {
           backgroundColor: smcWhite,
           child: const Icon(Icons.document_scanner_rounded, size: 35),
         ),
-        const SizedBox(height: 5),
+        const Space(height: 5),
         Text(
           label,
           textAlign: TextAlign.center,
@@ -238,7 +245,7 @@ class ItemListNews extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 23),
+          const VerSpace(width: 23),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -255,7 +262,7 @@ class ItemListNews extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.clip,
                 ),
-                const SizedBox(height: 5),
+                const Space(height: 5),
                 Text(
                   '25 Nov 2022',
                   style: TextStyle(
@@ -265,7 +272,7 @@ class ItemListNews extends StatelessWidget {
                     height: 0,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const Space10(),
                 Text(
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquet malesuada ex',
                   textAlign: TextAlign.start,
