@@ -45,7 +45,7 @@ class PurchasingDetailPage extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(top: 20, bottom: 70),
+                    margin: const EdgeInsets.only(top: 20, bottom: 100),
                     decoration: ShapeDecoration(
                       color: smcWhite,
                       shape: RoundedRectangleBorder(
@@ -70,7 +70,7 @@ class PurchasingDetailPage extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 0,
+            bottom: 20,
             child: Container(
               width: getWidth(context),
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),

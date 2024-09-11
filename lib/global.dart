@@ -107,3 +107,33 @@ class LabelValueListItem extends StatelessWidget {
 double getHeight(BuildContext context) => MediaQuery.sizeOf(context).height;
 
 double getWidth(BuildContext context) => MediaQuery.sizeOf(context).width;
+
+class StackBgHeader extends StatelessWidget {
+  final Widget body;
+  const StackBgHeader({super.key, required this.body});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          width: getWidth(context),
+          height: getHeight(context),
+          color: smcGreyE7,
+        ),
+        Container(
+          height: 260,
+          width: getWidth(context),
+          decoration: BoxDecoration(
+            color: smcGreyE7,
+            image: const DecorationImage(
+              image: AssetImage(bgHeaderImg),
+              fit: BoxFit.fill,
+            ),
+          ),
+        ),
+        body,
+      ],
+    );
+  }
+}

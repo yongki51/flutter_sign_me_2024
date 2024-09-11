@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sign_me/pages/purchasing/purchasing_detail_page.dart';
+import 'package:flutter_sign_me/pages/eform/eform_detail_page.dart';
 import 'package:flutter_sign_me/themes/colors.dart';
 
 void main() {
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: smcGreen),
         useMaterial3: true,
       ),
-      home: const PurchasingDetailPage(),
+      home: const EformDetailPage(),
       // AnimatedSplashScreen(
       //   splash: Image.asset(logoImg),
       //   duration: 1500,

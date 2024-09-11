@@ -112,11 +112,11 @@ class PurchasingPageState extends State<PurchasingPage>
                         fillColor: smcGreyEf,
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100),
-                          borderSide: BorderSide(color: smcWhite),
+                          borderSide: BorderSide(color: smcGreyEf),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100),
-                          borderSide: BorderSide(color: smcWhite),
+                          borderSide: BorderSide(color: smcGreyEf),
                         ),
                         prefixIcon: const Icon(Icons.search_rounded),
                         prefixIconColor: smcGrey75,
@@ -144,18 +144,18 @@ class PurchasingPageState extends State<PurchasingPage>
 
 class ListPurchasingNew extends StatelessWidget {
   const ListPurchasingNew({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (context, index) {
-        return InkWell(
-          onTap: () => replacePageWith(context, const PurchasingDetailPage()),
-          child: Column(
-            children: [
-              index == 0 ? const Space(height: 20) : const SizedBox(),
-              Container(
+        return Column(
+          children: [
+            index == 0 ? const Space(height: 20) : const SizedBox(),
+            InkWell(
+              onTap: () =>
+                  replacePageWith(context, const PurchasingDetailPage()),
+              child: Container(
                 margin: const EdgeInsets.fromLTRB(20, 0, 20, 10),
                 decoration: ShapeDecoration(
                   color: smcWhite,
@@ -241,8 +241,8 @@ class ListPurchasingNew extends StatelessWidget {
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         );
       },
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sign_me/dry_widget/space_widget.dart';
 import 'package:flutter_sign_me/global.dart';
+import 'package:flutter_sign_me/pages/eform/eform_page.dart';
+import 'package:flutter_sign_me/pages/news_page.dart';
 import 'package:flutter_sign_me/pages/purchasing/purchasing_page.dart';
 import 'package:flutter_sign_me/pages/auth/login_page.dart';
 import 'package:flutter_sign_me/themes/colors.dart';
@@ -42,7 +44,7 @@ class DashboardPage extends StatelessWidget {
             const BoxMenu(),
             const Space(height: 30),
             Padding(
-              padding: const EdgeInsets.only(left: 20, bottom: 10),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
               child: Text(
                 'News',
                 style: TextStyle(
@@ -120,7 +122,7 @@ class BoxMenu extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             InkWell(
-              onTap: () => replacePageWith(context, const PurchasingPage()),
+              onTap: () => replacePageWith(context, const EformPage()),
               child: Stack(
                 children: [
                   Container(
@@ -220,75 +222,78 @@ class ItemListNews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(20, 0, 20, 10),
-      padding: const EdgeInsets.all(10),
-      decoration: ShapeDecoration(
-        color: smcWhite,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+    return InkWell(
+      onTap: () => replacePageWith(context, const NewsPage()),
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+        padding: const EdgeInsets.all(10),
+        decoration: ShapeDecoration(
+          color: smcWhite,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
         ),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 76,
-            height: 76,
-            decoration: ShapeDecoration(
-              image: const DecorationImage(
-                image: NetworkImage("https://via.placeholder.com/76x76"),
-                fit: BoxFit.cover,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: 76,
+              height: 76,
+              decoration: ShapeDecoration(
+                image: const DecorationImage(
+                  image: NetworkImage("https://via.placeholder.com/76x76"),
+                  fit: BoxFit.cover,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
               ),
             ),
-          ),
-          const VerSpace(width: 23),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Maintenance for Swimming Pool',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    color: smcBlack16,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.30,
-                    height: 0,
+            const VerSpace(width: 23),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Maintenance for Swimming Pool',
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      color: smcBlack16,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: -0.30,
+                      height: 0,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.clip,
                   ),
-                  maxLines: 2,
-                  overflow: TextOverflow.clip,
-                ),
-                const Space(height: 5),
-                Text(
-                  '25 Nov 2022',
-                  style: TextStyle(
-                    color: smcGrey99,
-                    fontSize: 12,
-                    letterSpacing: -0.30,
-                    height: 0,
+                  const Space(height: 5),
+                  Text(
+                    '25 Nov 2022',
+                    style: TextStyle(
+                      color: smcGrey99,
+                      fontSize: 12,
+                      letterSpacing: -0.30,
+                      height: 0,
+                    ),
                   ),
-                ),
-                const Space10(),
-                Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquet malesuada ex',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                    color: smcBlack33,
-                    fontSize: 12,
-                    height: 0,
-                    letterSpacing: -0.30,
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.clip,
-                )
-              ],
+                  const Space10(),
+                  Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquet malesuada ex',
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      color: smcBlack33,
+                      fontSize: 12,
+                      height: 0,
+                      letterSpacing: -0.30,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.clip,
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
