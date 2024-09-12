@@ -6,3 +6,4 @@ const String approveInfoImg = 'assets/images/approved_info.png';
 const String bgHeaderImg = 'assets/images/bg_header.png';
 const String icIjinKerjaImg = 'assets/images/ic_ijin_kerja.png';
 const String icFileEformImg = 'assets/images/ic_file_eform.png';
+const String bgFullImg = 'assets/images/bg_full.png';
