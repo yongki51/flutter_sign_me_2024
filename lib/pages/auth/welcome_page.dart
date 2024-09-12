@@ -29,7 +29,7 @@ class WelcomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'WELCOME TO',
+                      'WELCOME TOOOO',
                       style: TextStyle(
                         color: smcWhite,
                         fontSize: 24,
