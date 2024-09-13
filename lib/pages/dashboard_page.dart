@@ -110,9 +110,13 @@ class BoxMenu extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       decoration: ShapeDecoration(
-        color: smcGreen,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
+        ),
+        gradient: const LinearGradient(
+          begin: Alignment(0.96, 0.29),
+          end: Alignment(-0.96, -0.29),
+          colors: [Color(0xFFADFCE7), Color(0xFF11B28A)],
         ),
       ),
       child: Padding(
@@ -130,7 +134,9 @@ class BoxMenu extends StatelessWidget {
                     child: const Menu(label: 'eForm'),
                   ),
                   const Positioned(
-                      right: 0, child: BadgeUnread(totalUnread: 100)),
+                    right: 0,
+                    child: BadgeUnread(totalUnread: 100),
+                  ),
                 ],
               ),
             ),
@@ -199,7 +205,21 @@ class Menu extends StatelessWidget {
         CircleAvatar(
           radius: MediaQuery.sizeOf(context).width * 0.11,
           backgroundColor: smcWhite,
-          child: const Icon(Icons.document_scanner_rounded, size: 35),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.document_scanner_rounded, size: 35),
+              Text(
+                '99+',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: smcBlack33,
+                  fontSize: 18,
+                  height: 0,
+                ),
+              ),
+            ],
+          ),
         ),
         const Space(height: 5),
         Text(

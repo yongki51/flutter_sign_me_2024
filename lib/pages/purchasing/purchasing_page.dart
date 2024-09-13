@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sign_me/dry_widget/line_widget.dart';
 import 'package:flutter_sign_me/dry_widget/purchasing_status.dart';
 import 'package:flutter_sign_me/dry_widget/space_widget.dart';
 import 'package:flutter_sign_me/global.dart';
@@ -125,11 +126,16 @@ class PurchasingPageState extends State<PurchasingPage>
                     ),
                   ),
                   const VerSpace(width: 15),
-                  CircleAvatar(
-                    backgroundColor: smcGreenA4,
-                    foregroundColor: smcWhite,
-                    radius: 30,
-                    child: const Icon(Icons.tune_rounded, size: 30),
+                  InkWell(
+                    onTap: () {
+                      showModalBottomSheetFilterPurchasing(context);
+                    },
+                    child: CircleAvatar(
+                      backgroundColor: smcGreenA4,
+                      foregroundColor: smcWhite,
+                      radius: 30,
+                      child: const Icon(Icons.tune_rounded, size: 30),
+                    ),
                   )
                 ],
               ),
@@ -137,6 +143,242 @@ class PurchasingPageState extends State<PurchasingPage>
             const Space(height: 20),
           ],
         ),
+      ),
+    );
+  }
+
+  int indexSortByDate = 0;
+  Future<dynamic> showModalBottomSheetFilterPurchasing(BuildContext context) {
+    return showModalBottomSheet(
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return Container(
+              padding: const EdgeInsets.only(top: 20),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(45),
+                  topRight: Radius.circular(45),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Container(
+                      width: 58,
+                      height: 5,
+                      decoration: ShapeDecoration(
+                        color: const Color(0xFFC4C4C4),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          Center(
+                            child: Text(
+                              'Filter',
+                              style: TextStyle(
+                                color: smcBlack,
+                                fontSize: 22,
+                                fontFamily: 'Proxima Nova',
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                          const LineThick2(),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Space(height: 15),
+                                  Text(
+                                    'Sort by Date',
+                                    style: TextStyle(
+                                      color: smcGreen,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                      height: 0,
+                                    ),
+                                  ),
+                                  const LineThick2(),
+                                  const Space(height: 20),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: InkWell(
+                                          onTap: () {
+                                            setState(() {
+                                              indexSortByDate = 0;
+                                            });
+                                          },
+                                          child: FilterSortByDateItem(
+                                            icon: icOldestImg,
+                                            label: 'Oldest',
+                                            borderColor: (indexSortByDate == 0)
+                                                ? smcGreen
+                                                : smcGreyCc,
+                                            bgColor: (indexSortByDate == 0)
+                                                ? smcBlueF6
+                                                : smcWhite,
+                                          ),
+                                        ),
+                                      ),
+                                      const VerSpace(width: 15),
+                                      Expanded(
+                                        child: InkWell(
+                                          onTap: () {
+                                            setState(() {
+                                              indexSortByDate = 1;
+                                            });
+                                          },
+                                          child: FilterSortByDateItem(
+                                            icon: icNewestImg,
+                                            label: 'Newest',
+                                            borderColor: (indexSortByDate == 0)
+                                                ? smcGreyCc
+                                                : smcGreen,
+                                            bgColor: (indexSortByDate == 0)
+                                                ? smcWhite
+                                                : smcBlueF6,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const Space(height: 20),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    color: smcGreyE7,
+                    padding: const EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            height: 50,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  indexSortByDate = 0;
+                                  Navigator.pop(context);
+                                });
+                              },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    WidgetStatePropertyAll(smcWhite),
+                                foregroundColor:
+                                    WidgetStatePropertyAll(smcGreen),
+                                side: WidgetStatePropertyAll(
+                                  BorderSide(color: smcGreen),
+                                ),
+                              ),
+                              child: const Text(
+                                "Reset",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                  height: 0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const VerSpace(width: 20),
+                        Expanded(
+                          child: Material(
+                            color: Colors.transparent,
+                            child: Container(
+                              height: 50,
+                              decoration: ShapeDecoration(
+                                gradient: linearGradient,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Submit',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: smcWhite,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    height: 0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            );
+          },
+        );
+      },
+      context: context,
+      backgroundColor: Colors.transparent,
+      useSafeArea: true,
+    );
+  }
+}
+
+class FilterSortByDateItem extends StatelessWidget {
+  final String icon;
+  final String label;
+  final Color borderColor;
+  final Color bgColor;
+
+  const FilterSortByDateItem({
+    super.key,
+    required this.label,
+    required this.icon,
+    required this.bgColor,
+    required this.borderColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(left: 10),
+      height: 50,
+      decoration: ShapeDecoration(
+        color: bgColor,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(width: 2, color: borderColor),
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+      child: Row(
+        children: [
+          Image(image: AssetImage(icon)),
+          const VerSpace10(),
+          Text(
+            label,
+            style: TextStyle(color: smcGreen, fontWeight: FontWeight.w700),
+          ),
+        ],
       ),
     );
   }

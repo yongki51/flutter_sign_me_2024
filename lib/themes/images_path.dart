@@ -7,3 +7,6 @@ const String bgHeaderImg = 'assets/images/bg_header.png';
 const String icIjinKerjaImg = 'assets/images/ic_ijin_kerja.png';
 const String icFileEformImg = 'assets/images/ic_file_eform.png';
 const String bgFullImg = 'assets/images/bg_full.png';
+const String warningImg = 'assets/images/warning.png';
+const String icOldestImg = 'assets/images/ic_oldest.png';
+const String icNewestImg = 'assets/images/ic_newest.png';

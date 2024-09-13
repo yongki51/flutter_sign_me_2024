@@ -172,11 +172,7 @@ class EformListItem extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.fromLTRB(20, 0, 20, 10),
         decoration: ShapeDecoration(
-          gradient: const LinearGradient(
-            begin: Alignment(-0.50, -0.86),
-            end: Alignment(0.5, 0.86),
-            colors: [Color(0xFFF4F4F4), Color(0xFFF1F1F1)],
-          ),
+          gradient: linearGradient,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         ),

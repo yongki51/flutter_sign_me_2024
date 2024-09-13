@@ -15,14 +15,19 @@ Color smcGrey55 = const Color(0xFF555555);
 Color smcGreyEf = const Color(0xFFEFEFEF);
 Color smcGreyE7 = const Color(0xFFE7E7E7);
 Color smcGreyEc = const Color(0xFFECECEC);
+Color smcGreyC4 = const Color(0xFFC4C4C4);
+Color smcGreyFa = const Color(0xFFFAFAFA);
+Color smcGreyCc = const Color(0xFFCCCCCC);
 
 Color smcGreen = const Color(0xFF00A97E);
 Color smcGreen19 = const Color(0x1900A97E);
 Color smcGreen33 = const Color(0x3300A97E);
 Color smcGreenA4 = const Color(0xFF53A9A4);
+Color smcGreen34 = const Color(0xFF09CA34);
 
 Color smcBlue = const Color(0xFF246BFD);
 Color smcBlueA9 = const Color(0xFF006CA9);
+Color smcBlueF6 = const Color(0x338CB7F6);
 
 Color smcRed = const Color(0xFFFF3709);
 Color smcRed49 = const Color(0xFFFF6449);
@@ -31,3 +36,9 @@ Color smcWhite = const Color(0xFFFFFFFF);
 Color smcPurple = const Color(0xFF494EA1);
 Color smcOrange = const Color(0xFFFFA800);
 Color smc = const Color(0x000000ff);
+
+const linearGradient = LinearGradient(
+  begin: Alignment(-1, 0),
+  end: Alignment(1, 0),
+  colors: [Color(0xFF00A97E), Color(0xFF4586C4)],
+);

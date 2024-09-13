@@ -115,11 +115,7 @@ class EformDetailPage extends StatelessWidget {
                         child: Container(
                           height: 50,
                           decoration: ShapeDecoration(
-                            gradient: const LinearGradient(
-                              begin: Alignment(-1, 0),
-                              end: Alignment(1, 0),
-                              colors: [Color(0xFF00A97E), Color(0xFF4586C4)],
-                            ),
+                            gradient: linearGradient,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50),
                             ),
