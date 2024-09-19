@@ -1,10 +1,9 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_sign_me/dry_widget/space_widget.dart';
 import 'package:flutter_sign_me/global.dart';
 import 'package:flutter_sign_me/pages/dashboard_page.dart';
 import 'package:flutter_sign_me/pages/eform/eform_detail_page.dart';
+import 'package:flutter_sign_me/pages/eform/eform_util.dart';
 import 'package:flutter_sign_me/themes/colors.dart';
 import 'package:flutter_sign_me/themes/images_path.dart';
 
@@ -20,7 +19,9 @@ class _EformPageState extends State<EformPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return PopScopeF316(
-      onPopInvoked: (canPop) => replacePageWith(context, const DashboardPage()),
+      onPopInvoked: (didPop, result) {
+        replacePageWith(context, const DashboardPage());
+      },
       child: Stack(
         children: [
           Container(
@@ -140,7 +141,7 @@ class _EformPageState extends State<EformPage> with TickerProviderStateMixin {
                         controller: tabController,
                         children: [
                           ListView.builder(
-                            itemCount: 30,
+                            itemCount: 10,
                             itemBuilder: (context, index) {
                               return const EformListItem();
                             },
@@ -172,9 +173,10 @@ class EformListItem extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.fromLTRB(20, 0, 20, 10),
         decoration: ShapeDecoration(
-          gradient: linearGradient,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          gradient: linearGradientEformListItem,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
         ),
         child: Row(
           children: [
@@ -234,6 +236,9 @@ class EformListItem extends StatelessWidget {
                                 letterSpacing: -0.30,
                               ),
                             ),
+                            const GetStatusEform(status: '1'),
+                            const GetStatusEform(status: '2'),
+                            const GetStatusEform(status: '3'),
                           ],
                         ),
                       ),

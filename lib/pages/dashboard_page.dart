@@ -74,14 +74,14 @@ class DashboardPage extends StatelessWidget {
         return Dialog(
           insetPadding: const EdgeInsets.symmetric(horizontal: 20),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(30),
           ),
           child: SizedBox(
             width: double.infinity,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Space(height: 30),
+                const Space(height: 90),
                 Image.asset(logoImg),
                 const Space(height: 20),
                 Text(
@@ -89,7 +89,7 @@ class DashboardPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(color: smcGrey77, fontSize: 16),
                 ),
-                const Space(height: 30),
+                const Space(height: 90),
               ],
             ),
           ),

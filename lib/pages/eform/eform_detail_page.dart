@@ -11,7 +11,8 @@ class EformDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopScopeF316(
-      onPopInvoked: (canPop) => replacePageWith(context, const EformPage()),
+      onPopInvoked: (didPop, result) =>
+          replacePageWith(context, const EformPage()),
       child: Stack(
         children: [
           Container(
@@ -89,7 +90,7 @@ class EformDetailPage extends StatelessWidget {
                       child: SizedBox(
                         height: 50,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () => showModalBottomReject(context),
                           style: ButtonStyle(
                             backgroundColor: WidgetStatePropertyAll(smcWhite),
                             foregroundColor: WidgetStatePropertyAll(smcGreen),
@@ -110,25 +111,28 @@ class EformDetailPage extends StatelessWidget {
                     ),
                     const VerSpace(width: 20),
                     Expanded(
-                      child: Material(
-                        color: Colors.transparent,
-                        child: Container(
-                          height: 50,
-                          decoration: ShapeDecoration(
-                            gradient: linearGradient,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Material(
+                          color: Colors.transparent,
+                          child: Container(
+                            height: 50,
+                            decoration: ShapeDecoration(
+                              gradient: linearGradient,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              ),
                             ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'APPROVE',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: smcWhite,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                height: 0,
+                            child: Center(
+                              child: Text(
+                                'APPROVE',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: smcWhite,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                  height: 0,
+                                ),
                               ),
                             ),
                           ),
@@ -144,8 +148,160 @@ class EformDetailPage extends StatelessWidget {
       ),
     );
   }
+
+  Future<dynamic> showModalBottomReject(BuildContext context) {
+    return showModalBottomSheet(
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return Container(
+              width: getWidth(context),
+              decoration: BoxDecoration(
+                color: smcWhite,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(45),
+                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: 58,
+                    height: 5,
+                    margin: const EdgeInsets.only(top: 20),
+                    decoration: ShapeDecoration(
+                      color: smcGreyC4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                  SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          20, 20, 20, MediaQuery.of(context).viewInsets.bottom),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Please Confirm',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: smcBlack33,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              height: 0,
+                            ),
+                          ),
+                          const Space10(),
+                          Image.asset(warningImg, height: 48, width: 48),
+                          const Space10(),
+                          Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: 'Are you sure want to\n',
+                                  style: TextStyle(
+                                    color: smcBlack33,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    height: 0,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'Reject?',
+                                  style: TextStyle(
+                                    color: smcBlack33,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    height: 0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const Space(height: 30),
+                  Container(
+                    color: smcGreyE7,
+                    padding: const EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            height: 50,
+                            child: ElevatedButton(
+                              onPressed: () => Navigator.pop(context),
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    WidgetStatePropertyAll(smcWhite),
+                                foregroundColor:
+                                    WidgetStatePropertyAll(smcGreen),
+                                side: WidgetStatePropertyAll(
+                                  BorderSide(color: smcGreen),
+                                ),
+                              ),
+                              child: const Text(
+                                "CANCEL",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                  height: 0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const VerSpace(width: 20),
+                        Expanded(
+                          child: Material(
+                            color: Colors.transparent,
+                            child: Container(
+                              height: 50,
+                              decoration: ShapeDecoration(
+                                gradient: linearGradient,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'YES',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: smcWhite,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    height: 0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            );
+          },
+        );
+      },
+      context: context,
+      backgroundColor: Colors.transparent,
+      useSafeArea: true,
+      isScrollControlled: true,
+    );
+  }
 }
 
+// util
 class EformApproverSection extends StatelessWidget {
   const EformApproverSection({super.key});
   @override
@@ -184,12 +340,15 @@ class EformApproverSection extends StatelessWidget {
                           height: 0,
                         ),
                       ),
-                      Text(
-                        'View Note',
-                        style: TextStyle(
-                          color: smcPurple,
-                          fontSize: 13,
-                          height: 0,
+                      InkWell(
+                        onTap: () => modalApproverStatusInfo(context),
+                        child: Text(
+                          'View Note',
+                          style: TextStyle(
+                            color: smcPurple,
+                            fontSize: 13,
+                            height: 0,
+                          ),
                         ),
                       )
                     ],
@@ -225,6 +384,71 @@ class EformApproverSection extends StatelessWidget {
           const Space10(),
         ],
       ),
+    );
+  }
+
+  Future<dynamic> modalApproverStatusInfo(context) {
+    return showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        return Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: smcWhite,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(45),
+              topRight: Radius.circular(45),
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  width: 58,
+                  height: 5,
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFFC4C4C4),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20, bottom: 10),
+                child: Center(
+                  child: Text(
+                    'Notes',
+                    style: TextStyle(
+                      color: smcGreen,
+                      fontSize: 16,
+                      fontFamily: 'Proxima Nova',
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: Column(
+                  children: [
+                    Text(
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar dictum pharetra lobortis ut et. Praesent tortor fermentum sed lectus quis viverra. Augue facilisis nisl malesuada sem arcu. Placerat consequat diam vehicula sodales ut. Et nec nibh netus scelerisque senectus nulla.Volutpat arcu porttitor nunc nunc eget nibh feugiat scelerisque. Interdum quam.',
+                      style: TextStyle(
+                        color: smcGrey55,
+                        fontFamily: 'Proxima Nova',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }

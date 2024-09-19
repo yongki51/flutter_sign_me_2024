@@ -12,7 +12,7 @@ class PurchasingDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopScopeF316(
-      onPopInvoked: (canPop) =>
+      onPopInvoked: (didPop, result) =>
           replacePageWith(context, const PurchasingPage()),
       child: Stack(
         children: [
@@ -81,7 +81,7 @@ class PurchasingDetailPage extends StatelessWidget {
                     child: SizedBox(
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => showModalBottomReject(context),
                         style: ButtonStyle(
                           backgroundColor: WidgetStatePropertyAll(smcWhite),
                           foregroundColor: WidgetStatePropertyAll(smcGreen),
@@ -330,6 +330,268 @@ class PurchasingDetailPage extends StatelessWidget {
       backgroundColor: Colors.transparent,
       useSafeArea: true,
       isScrollControlled: true,
+    );
+  }
+
+  Future<dynamic> showModalBottomReject(BuildContext context) {
+    return showModalBottomSheet(
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return Container(
+              width: getWidth(context),
+              decoration: BoxDecoration(
+                color: smcWhite,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(45),
+                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: 58,
+                    height: 5,
+                    margin: const EdgeInsets.only(top: 20),
+                    decoration: ShapeDecoration(
+                      color: smcGreyC4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                  SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          20, 20, 20, MediaQuery.of(context).viewInsets.bottom),
+                      child: Column(
+                        children: [
+                          Image.asset(warningImg, height: 48, width: 48),
+                          const Space10(),
+                          Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: 'Are you sure want to ',
+                                  style: TextStyle(
+                                    color: smcBlack,
+                                    fontSize: 16,
+                                    height: 0,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'REJECT',
+                                  style: TextStyle(
+                                    color: smcRed26,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    height: 0,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: '\nthis transaction?',
+                                  style: TextStyle(
+                                    color: smcBlack,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                    height: 0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          const Space10(),
+                          const DropdownReason(),
+                          const Space10(),
+                          TextFormField(
+                            minLines: 3,
+                            maxLines: 3,
+                            decoration: InputDecoration(
+                              fillColor: smcGreyFa,
+                              hintText: 'Input notes (optional)...',
+                              hintStyle: TextStyle(
+                                color: smcGrey99,
+                                fontSize: 15,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w900,
+                                height: 0,
+                                letterSpacing: -0.30,
+                              ),
+                            ),
+                          ),
+                          const Space(height: 20),
+                          Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: 'By clicking “',
+                                  style: TextStyle(
+                                    color: smcGrey77,
+                                    fontWeight: FontWeight.w400,
+                                    height: 0,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'Yes',
+                                  style: TextStyle(
+                                    color: smcGrey77,
+                                    fontWeight: FontWeight.w700,
+                                    height: 0,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text:
+                                      '” you are not be able to undo this action',
+                                  style: TextStyle(color: smcGrey77, height: 0),
+                                ),
+                              ],
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const Space(height: 50),
+                  Container(
+                    color: smcGreyE7,
+                    padding: const EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            height: 50,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                selectedReason = null;
+                                Navigator.pop(context);
+                              },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    WidgetStatePropertyAll(smcWhite),
+                                foregroundColor:
+                                    WidgetStatePropertyAll(smcGreen),
+                                side: WidgetStatePropertyAll(
+                                  BorderSide(color: smcGreen),
+                                ),
+                              ),
+                              child: const Text(
+                                "CANCEL",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                  height: 0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const VerSpace(width: 20),
+                        Expanded(
+                          child: Material(
+                            color: Colors.transparent,
+                            child: Container(
+                              height: 50,
+                              decoration: ShapeDecoration(
+                                gradient: linearGradient,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'YES',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: smcWhite,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    height: 0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            );
+          },
+        );
+      },
+      context: context,
+      backgroundColor: Colors.transparent,
+      useSafeArea: true,
+      isScrollControlled: true,
+      isDismissible: false,
+    );
+  }
+}
+
+String? selectedReason;
+
+class DropdownReason extends StatefulWidget {
+  const DropdownReason({super.key});
+
+  @override
+  State<DropdownReason> createState() => _DropdownReasonState();
+}
+
+class _DropdownReasonState extends State<DropdownReason> {
+  @override
+  Widget build(BuildContext context) {
+    List reasonList = [
+      {
+        "ReasonCode": "1",
+        "ReasonDescription": "des 1",
+      },
+      {
+        "ReasonCode": "2",
+        "ReasonDescription": "des 2",
+      }
+    ];
+    return Container(
+      decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        color: smcGreyFa,
+      ),
+      child: DropdownButton(
+        value: selectedReason,
+        items: reasonList.map(
+          (item) {
+            return DropdownMenuItem(
+              value: item['ReasonCode'],
+              child: Text('${item['ReasonDescription']}'),
+            );
+          },
+        ).toList(),
+        onChanged: (dynamic newValue) {
+          setState(() {
+            selectedReason = newValue;
+          });
+        },
+        underline: Container(),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        borderRadius: BorderRadius.circular(20),
+        isExpanded: true,
+        hint: Text(
+          'Please select the reason',
+          style: TextStyle(
+            color: smcBlack33,
+            fontSize: 15,
+            height: 0,
+            letterSpacing: -0.30,
+          ),
+        ),
+        dropdownColor: smcGreyFa,
+        iconEnabledColor: smcBlack33,
+      ),
     );
   }
 }

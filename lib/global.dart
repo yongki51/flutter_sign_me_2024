@@ -13,7 +13,7 @@ void replacePageWith(BuildContext context, Widget destination) {
 }
 
 class PopScopeF316 extends StatelessWidget {
-  final Function(bool canPop)? onPopInvoked;
+  final Function(bool didPop, Object? result)? onPopInvoked;
   final Widget child;
 
   const PopScopeF316({
@@ -26,7 +26,7 @@ class PopScopeF316 extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      onPopInvoked: onPopInvoked,
+      onPopInvokedWithResult: onPopInvoked,
       child: child,
     );
   }

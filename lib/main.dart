@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sign_me/pages/dashboard_page.dart';
+import 'package:flutter_sign_me/pages/auth/welcome_page.dart';
 import 'package:flutter_sign_me/themes/colors.dart';
 
 void main() {
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: smcGreen),
         useMaterial3: true,
       ),
-      home: const DashboardPage(),
+      home: const WelcomePage(),
       // AnimatedSplashScreen(
       //   splash: Image.asset(logoImg),
       //   duration: 1500,

@@ -10,3 +10,7 @@ const String bgFullImg = 'assets/images/bg_full.png';
 const String warningImg = 'assets/images/warning.png';
 const String icOldestImg = 'assets/images/ic_oldest.png';
 const String icNewestImg = 'assets/images/ic_newest.png';
+const String phoneWelcomeImg = 'assets/images/phone_welcome.png';
+const String icFitOutImg = 'assets/images/ic_fit_out.png';
+const String icRegularImg = 'assets/images/ic_regular.png';
+const String icOvtImg = 'assets/images/ic_ovt.png';

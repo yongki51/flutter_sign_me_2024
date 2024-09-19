@@ -31,6 +31,7 @@ Color smcBlueF6 = const Color(0x338CB7F6);
 
 Color smcRed = const Color(0xFFFF3709);
 Color smcRed49 = const Color(0xFFFF6449);
+Color smcRed26 = const Color(0xFFF24C26);
 
 Color smcWhite = const Color(0xFFFFFFFF);
 Color smcPurple = const Color(0xFF494EA1);
@@ -41,4 +42,10 @@ const linearGradient = LinearGradient(
   begin: Alignment(-1, 0),
   end: Alignment(1, 0),
   colors: [Color(0xFF00A97E), Color(0xFF4586C4)],
+);
+
+const linearGradientEformListItem = LinearGradient(
+  begin: Alignment(0.5, 0.86),
+  end: Alignment(-0.50, -0.86),
+  colors: [Color(0xFFF4F4F4), Color(0xFFF1F1F1)],
 );

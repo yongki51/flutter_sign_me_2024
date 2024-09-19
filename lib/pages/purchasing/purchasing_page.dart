@@ -21,7 +21,8 @@ class PurchasingPageState extends State<PurchasingPage>
   @override
   Widget build(BuildContext context) {
     return PopScopeF316(
-      onPopInvoked: (canPop) => replacePageWith(context, const DashboardPage()),
+      onPopInvoked: (didPop, result) =>
+          replacePageWith(context, const DashboardPage()),
       child: Scaffold(
         backgroundColor: smcGreyE7,
         appBar: appBarPurchasing(context),
